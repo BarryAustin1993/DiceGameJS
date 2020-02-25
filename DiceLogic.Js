@@ -1,29 +1,37 @@
 "use strict";
 
-var player = {playersRoll: 0, username}
+var Austin = {playersRoll: 0}
+var Andrew = {playersRoll: 0}
+var David = {playersRoll: 0}
+var Nevin = {playersRoll: 0}
+var Matthew = {playersRoll: 0}
+var Jacob = {playersRoll: 0}
+var Dajon = {playersRoll: 0}
+var Mike = {playersRoll: 0}
+var Charlie = {playersRoll: 0}
+var Dorian = {playersRoll: 0}
 
-var players = [player, player, player, player, player, player, player, player, player, player,]
+var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
 
+var round = 1;
 
-function namePlayers(){
-    var i = 1;
-    for (player of players){
-        player.username = "player" + i;
-        i++;
-    };
-}
-
-function runGame(){
- //player starts round
-//display in information after round
-}
-
+document.getElementById("Round").innerHTML = "Click here to start round " + round + "!";
+document.getElementById("Player1").innerHTML = "Player: Austin - Total Dice Roll = " + Austin.playersRoll;
+document.getElementById("Player2").innerHTML = "Player: Andrew - Total Dice Roll = " + Andrew.playersRoll;
+document.getElementById("Player3").innerHTML = "Player: David - Total Dice Roll = " + David.playersRoll;
+document.getElementById("Player4").innerHTML = "Player: Nevin - Total Dice Roll = " + Nevin.playersRoll;
+document.getElementById("Player5").innerHTML = "Player: Matthew - Total Dice Roll = " + Matthew.playersRoll;
+document.getElementById("Player6").innerHTML = "Player: Jacob - Total Dice Roll = " + Jacob.playersRoll;
+document.getElementById("Player7").innerHTML = "Player: Dajon - Total Dice Roll = " + Dajon.playersRoll;
+document.getElementById("Player8").innerHTML = "Player: Mike - Total Dice Roll = " + Mike.playersRoll;
+document.getElementById("Player9").innerHTML = "Player: Charlie - Total Dice Roll = " + Charlie.playersRoll;
+document.getElementById("Player10").innerHTML = "Player: Dorian - Total Dice Roll = " + Dorian.playersRoll;
 
 
 function DetermineRoundType(){
 
-    var round = 1;
 
+    
 if(players.length > 4){
     startRound(2, False);   
     round ++;

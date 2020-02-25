@@ -1,15 +1,19 @@
 "use strict";
-var player = {playersRoll: 0};
-var Austin = player;
-var Andrew = player;
-var David = player;
-var Nevin = player;
-var Matthew = player;
-var Jacob = player;
-var Dajon = player;
-var Mike = player;
-var Charlie = player;
-var Dorian = player;
+class player {
+    constructor() {
+        this.playersRoll = 0;
+    }
+}
+var Austin = new player;
+var Andrew = new player;
+var David = new player;
+var Nevin = new player;
+var Matthew = new player;
+var Jacob = new player;
+var Dajon = new player;
+var Mike = new player;
+var Charlie = new player;
+var Dorian = new player;
 
 var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
 
@@ -43,22 +47,18 @@ else {
 }}
 
 function startRound(Eliminate, Suddendeath){
-    for (player of players){
     let i = 0;
+    for (player of players){
     let Roll = playerTurn(Suddendeath);
     players[i].playersRoll = Roll;
     i++;
     }
-    removePlayers(Eliminate, Suddendeath);
+    determineNext(Eliminate, Suddendeath);
 }
 
-function removePlayers(Eliminate, Suddendeath){
+function determineNext(Eliminate, Suddendeath){
     if(Suddendeath === false){
-        for (i = 0; i < Eliminate; i++) {
-            var removed = players.filter(function(value, index, arr){
-                return value = Math.min.apply(math, arr)
-            });
-        }
+        removeSmallest();
     }
     else{
         if(players[0].playersRoll === players[1].playersRoll){
@@ -71,6 +71,13 @@ function removePlayers(Eliminate, Suddendeath){
             console.log(players[1].username + "Wins")
         }
     }
+}
+
+function removeSmallest(){
+    for (let i = 0; i < Eliminate; i++) {
+            var removed = players.filter(function(value, index, arr){
+                return value = Math.min.apply(math, arr)
+            });
 }
 
 function playerTurn(Suddendeath){

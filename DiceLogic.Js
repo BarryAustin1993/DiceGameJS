@@ -1,15 +1,15 @@
 "use strict";
-
-var Austin = {playersRoll: 0}
-var Andrew = {playersRoll: 0}
-var David = {playersRoll: 0}
-var Nevin = {playersRoll: 0}
-var Matthew = {playersRoll: 0}
-var Jacob = {playersRoll: 0}
-var Dajon = {playersRoll: 0}
-var Mike = {playersRoll: 0}
-var Charlie = {playersRoll: 0}
-var Dorian = {playersRoll: 0}
+var player = {playersRoll: 0};
+var Austin = player;
+var Andrew = player;
+var David = player;
+var Nevin = player;
+var Matthew = player;
+var Jacob = player;
+var Dajon = player;
+var Mike = player;
+var Charlie = player;
+var Dorian = player;
 
 var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
 
@@ -29,27 +29,25 @@ document.getElementById("Player10").innerHTML = "Player: Dorian - Total Dice Rol
 
 
 function DetermineRoundType(){
-
-
-    
 if(players.length > 4){
-    startRound(2, False);   
+    startRound(2, false);   
     round ++;
 }
 else if(players.length === 4 || 3){
-    startRound(1,False);
+    startRound(1,false);
     round++;
 }
 else { 
-    startRound(1, True)
+    startRound(1, true)
     round ++;
 }}
 
 function startRound(Eliminate, Suddendeath){
     for (player of players){
+    let i = 0;
     let Roll = playerTurn(Suddendeath);
-    player.playersRoll = Roll
-    console.log(player.username + " " + player.playersRoll);
+    players[i].playersRoll = Roll;
+    i++;
     }
     removePlayers(Eliminate, Suddendeath);
 }
@@ -63,14 +61,14 @@ function removePlayers(Eliminate, Suddendeath){
         }
     }
     else{
-        if(players.player.playersRoll[0] === players.player.playersRoll[1]){
+        if(players[0].playersRoll === players[1].playersRoll){
             startRound(Eliminatem, Suddendeath);
         }
-        else if(players.player.playersRoll[0] > players.player.playersRoll[1]){
-            console.log(players.player.username[0] + "Wins")
+        else if(players[0].playersRoll > players[1].playersRoll){
+            console.log(players[0].username + "Wins")
         }
         else{
-            console.log(players.player.username[1] + "Wins")
+            console.log(players[1].username + "Wins")
         }
     }
 }

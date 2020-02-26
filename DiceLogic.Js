@@ -16,35 +16,21 @@ var Charlie = new player;
 var Dorian = new player;
 
 var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
-
 var round = 1;
 
-document.getElementById("Round").innerHTML = "Click here to start round " + round + "!";
-document.getElementById("Player1").innerHTML = "Player: Austin - Total Dice Roll = " + Austin.playersRoll;
-document.getElementById("Player2").innerHTML = "Player: Andrew - Total Dice Roll = " + Andrew.playersRoll;
-document.getElementById("Player3").innerHTML = "Player: David - Total Dice Roll = " + David.playersRoll;
-document.getElementById("Player4").innerHTML = "Player: Nevin - Total Dice Roll = " + Nevin.playersRoll;
-document.getElementById("Player5").innerHTML = "Player: Matthew - Total Dice Roll = " + Matthew.playersRoll;
-document.getElementById("Player6").innerHTML = "Player: Jacob - Total Dice Roll = " + Jacob.playersRoll;
-document.getElementById("Player7").innerHTML = "Player: Dajon - Total Dice Roll = " + Dajon.playersRoll;
-document.getElementById("Player8").innerHTML = "Player: Mike - Total Dice Roll = " + Mike.playersRoll;
-document.getElementById("Player9").innerHTML = "Player: Charlie - Total Dice Roll = " + Charlie.playersRoll;
-document.getElementById("Player10").innerHTML = "Player: Dorian - Total Dice Roll = " + Dorian.playersRoll;
-
-
 function DetermineRoundType(){
-if(players.length > 4){
+    if(players.length > 4){
     startRound(2, false);   
     round ++;
-}
-else if(players.length === 4 || 3){
+    }
+    else if(players.length === 4 || 3){
     startRound(1,false);
     round++;
-}
-else { 
+    }
+    else { 
     startRound(1, true)
     round ++;
-}
+    }
 }
 
 function startRound(Eliminate, Suddendeath){
@@ -104,14 +90,15 @@ function rollDice(){
 let dice4 = getRandomInteger( 1, 4 );
 let dice6 = getRandomInteger( 1, 6 );
 let dice8 = getRandomInteger( 1, 8 );
+let dice10 = getRandomInteger( 1, 10 );
 let dice12 = getRandomInteger( 1, 12 );
 let dice20 = getRandomInteger( 1, 20 );
-let totalRoll = addDice(dice4, dice6, dice8, dice12, dice20);
+let totalRoll = addDice(dice4, dice6, dice8,dice10, dice12, dice20);
 return totalRoll;
 }
 
-function addDice(dice4, dice6, dice8, dice12, dice20){
-let totalRoll = dice4 + dice6 + dice8 + dice12 + dice20;
+function addDice(dice4, dice6, dice8, dice10, dice12, dice20){
+let totalRoll = dice4 + dice6 + dice8 + dice10 + dice12 + dice20;
 return totalRoll;
 }
 
@@ -129,3 +116,4 @@ function SuddendeathRoll(){
     let deathrole = roll[roll5];
     return deathrole;
 }
+

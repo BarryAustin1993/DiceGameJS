@@ -48,18 +48,18 @@ else {
 }
 
 function startRound(Eliminate, Suddendeath){
-    let i = 0;
     for (player of players){
     let Roll = playerTurn(Suddendeath);
-    players[i].playersRoll = Roll;
-    i++;
+    player.playersRoll = Roll;
     }
     determineNext(Eliminate, Suddendeath);
 }
 
 function determineNext(Eliminate, Suddendeath){
     if(Suddendeath === false){
-        removeSmallest(Eliminate);
+        for ( let i = 0; i < Eliminate; i++){
+        determineSmallest(Eliminate);
+        }
     }
     else{
         if(players[0].playersRoll === players[1].playersRoll){
@@ -74,11 +74,18 @@ function determineNext(Eliminate, Suddendeath){
     }
 }
 
-function removeSmallest(Eliminate){
-    for (let i = 0; i < Eliminate; i++) {
-            var removed = Math.min.apply(null, players);
-                players = players.filter((e) => {return e !=removed});
-        }
+function determineSmallest(){
+    let j = 0;
+    for (let i = 1; i < players.length - 1; i++ ){
+        if(players[i].playersRoll < players[j.totalRoll]){
+            j = i;
+            }
+    }
+    removeSmallest(j);
+}
+
+function removeSmallest(j){
+players.splice(j, 1);
 }
 
 function playerTurn(Suddendeath){

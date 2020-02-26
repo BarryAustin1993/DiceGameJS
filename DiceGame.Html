@@ -7,10 +7,16 @@
 		<body>
             <header><center>    
                 <h1 id="Header">Dice Game Extraordinaire</h1>
-                <button onClick="DetermineRoundType()">Start Next Round!</button>
+                <button onClick="DetermineRoundType()"><div id="Round">Start Round 1</div></button>
            </center></header>
 			
 			<body>
+                <p1 id="ShowActivePlayers">Rules of the game: <br>10 players roll dice multiple in a 6-round game. In the first three rounds, the lowest two players each round are removed from the game (4 left).<br> In rounds 4 and 5, the lowest player is removed from the game (2 left). In the 6th and final round, a shootout occurs between the final two players.
+
+                    <br>*Set of Dice: 4-sided, 6-sided, 8-sided, 10-sided, 12-sided, 20-sided<br>
+                    
+                    *Dice Shootout rules: Each player rolls a d20 four times, recording each result, and then rolls a d4 to determine which of the four d20 results they get to use. <br>The higher result is the winner of the Battle Royal. In the event of a tie, repeat this process.
+                    </p1>
 
             </body>
             <script src="DiceLogic.Js"></script>

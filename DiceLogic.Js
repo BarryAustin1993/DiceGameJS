@@ -4,6 +4,7 @@ class player {
         this.playersRoll = 0;
     }
 }
+
 var Austin = new player;
 var Andrew = new player;
 var David = new player;
@@ -16,10 +17,15 @@ var Charlie = new player;
 var Dorian = new player;
 
 var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
-var round = 1;
+
+ var round = 1;
+ 
 
 function DetermineRoundType(){
+
+
     if(players.length > 4){
+
     startRound(2, false);   
     round ++;
     }
@@ -31,6 +37,7 @@ function DetermineRoundType(){
     startRound(1, true)
     round ++;
     }
+    document.getElementById("Round").innerHTML = "Start Round " + round + "!";
 }
 
 function startRound(Eliminate, Suddendeath){

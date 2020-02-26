@@ -1,22 +1,23 @@
 "use strict";
 class player {
-    constructor() {
+    constructor(name) {
         this.playersRoll = 0;
+        this.username = name;
     }
 }
 
-var Austin = new player;
-var Andrew = new player;
-var David = new player;
-var Nevin = new player;
-var Matthew = new player;
-var Jacob = new player;
-var Dajon = new player;
-var Mike = new player;
-var Charlie = new player;
-var Dorian = new player;
+var Austin = new player("Austin");
+var Andrew = new player("Andrew");
+var David = new player("David");
+var Nevin = new player("Nevin");
+var Matthew = new player("Matthew");
+var Jacob = new player("Jacob");
+var Dajon = new player("Dajon");
+var Mike = new player("Mike");
+var Charlie = new player("Charlie");
+var Dorian = new player("Dorian");
 
-var players = [Austin, Andrew, David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian]
+var players = [ David, Nevin, Matthew, Jacob, Dajon, Mike, Charlie, Dorian, Austin, Andrew]
 
  var round = 1;
  
@@ -29,7 +30,7 @@ function DetermineRoundType(){
     startRound(2, false);   
     round ++;
     }
-    else if(players.length === 4 || 3){
+    else if(players.length === 4 || players.length === 3){
     startRound(1,false);
     round++;
     }
@@ -53,24 +54,34 @@ function determineNext(Eliminate, Suddendeath){
         for ( let i = 0; i < Eliminate; i++){
         determineSmallest(Eliminate);
         }
+        let remainingPlayers = displayplayers();
+        document.getElementById("ShowActivePlayers").innerHTML = remainingPlayers;
     }
     else{
         if(players[0].playersRoll === players[1].playersRoll){
-            startRound(Eliminatem, Suddendeath);
+            startRound(Eliminate, Suddendeath);
         }
         else if(players[0].playersRoll > players[1].playersRoll){
-            console.log(players[0].username + "Wins")
+            document.getElementById("ShowActivePlayers").innerHTML = "Congradulations " + players[0].username + " You Win" ;
         }
         else{
-            console.log(players[1].username + "Wins")
+            document.getElementById("ShowActivePlayers").innerHTML = "Congradulations " + players[1].username + " You Win" ;
         }
     }
 }
 
+function displayplayers(){
+let remainingPlayers = "";
+for ( let i = 0; i < players.length; i++){
+    remainingPlayers += players[i].username + " " + "Dice Roll: " + players[i].playersRoll + "\n";
+}
+return remainingPlayers;
+}
+
 function determineSmallest(){
     let j = 0;
-    for (let i = 1; i < players.length - 1; i++ ){
-        if(players[i].playersRoll < players[j.totalRoll]){
+    for (let i = 1; i < players.length; i++ ){
+        if(players[i].playersRoll < players[j].playersRoll){
             j = i;
             }
     }
@@ -118,7 +129,7 @@ function SuddendeathRoll(){
     let roll2 = getRandomInteger( 1, 20 );
     let roll3 = getRandomInteger( 1, 20 );
     let roll4 = getRandomInteger( 1, 20 );
-    let roll5 = getRandomInteger( 1, 4 );
+    let roll5 = getRandomInteger( 0, 3 );
     var roll = [roll1, roll2, roll3, roll4];
     let deathrole = roll[roll5];
     return deathrole;

@@ -44,7 +44,8 @@ else if(players.length === 4 || 3){
 else { 
     startRound(1, true)
     round ++;
-}}
+}
+}
 
 function startRound(Eliminate, Suddendeath){
     let i = 0;
@@ -58,7 +59,7 @@ function startRound(Eliminate, Suddendeath){
 
 function determineNext(Eliminate, Suddendeath){
     if(Suddendeath === false){
-        removeSmallest();
+        removeSmallest(Eliminate);
     }
     else{
         if(players[0].playersRoll === players[1].playersRoll){
@@ -73,11 +74,11 @@ function determineNext(Eliminate, Suddendeath){
     }
 }
 
-function removeSmallest(){
+function removeSmallest(Eliminate){
     for (let i = 0; i < Eliminate; i++) {
-            var removed = players.filter(function(value, index, arr){
-                return value = Math.min.apply(math, arr)
-            });
+            var removed = Math.min.apply(null, players);
+                players = players.filter((e) => {return e !=removed});
+        }
 }
 
 function playerTurn(Suddendeath){
@@ -112,12 +113,12 @@ return Math.floor(Math.random() * (max - min +1) + min)
 }
 
 function SuddendeathRoll(){
-    var roll = [roll1, roll2, roll3, roll4];
     let roll1 = getRandomInteger( 1, 20 );
     let roll2 = getRandomInteger( 1, 20 );
     let roll3 = getRandomInteger( 1, 20 );
     let roll4 = getRandomInteger( 1, 20 );
     let roll5 = getRandomInteger( 1, 4 );
+    var roll = [roll1, roll2, roll3, roll4];
     let deathrole = roll[roll5];
     return deathrole;
 }
